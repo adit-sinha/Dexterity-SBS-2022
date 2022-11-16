@@ -449,6 +449,7 @@ def checkoutf():
         
     def typage():
         #final screen the user sees
+        global itemdb, mycursor
         checkoutpg.destroy()
         typage=Tk()
         typage['background'] = '#33f5eb'
@@ -457,8 +458,7 @@ def checkoutf():
         #button to exit the Tk window
         def exitbut():
             typage.destroy()
-            itemdb = mysql.connector.connect(host = 'localhost', user = 'root', passwd = 'root', db = 'dex')
-            mycursor = itemdb.cursor()
+            global itemdb, mycursor
             mycursor.execute('truncate table cart') #removing items from cart in sql
             print('aaa')
             itemdb.commit()
